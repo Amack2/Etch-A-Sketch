@@ -1,15 +1,18 @@
-
 #littleRedBox {
-display: flex;
-background-color: #7d1416;
-height: 1000px;
-max-width: 1000px; 
-max-height: 1000px;   
-justify-content: center;
-align-items: center;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: #7d1416;
+    height: 1000px;
+    max-width: 1000px;
+    max-height: 1000px;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 #etchASketchMainContainer {
+    
     margin-bottom: 100px;
     display: flex;
     flex-wrap: wrap;
@@ -23,10 +26,39 @@ align-items: center;
 
 }
 
+#buttonBox {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 828px;
+align-items: center;
 
+
+
+}
+
+.circle {
+    display: flex;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+
+
+#resetBtn {
+    width: 80px;
+    height: 40px;
+    border: 3px solid black; 
+
+    
+
+
+}
 
 .square {
-    font-weight: bolder;
+    display: flex;
     border: 1px solid #d0d1d1;
     background-color: #d0d1d1;
     width: 20px;
@@ -34,6 +66,7 @@ align-items: center;
 }
 
 .hovering {
+    display: flex;
     background-color: #575858;
-    border: 1px solid  #575858;
+    border: 1px solid #575858;
 }

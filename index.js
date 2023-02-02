@@ -1,17 +1,26 @@
 const mainContainer = document.querySelector('#etchASketchMainContainer');
-
-
-
-y = prompt('what is y');
-x = prompt('what is x');
-let a = x * y;
+const resetBtn = document.querySelector('#resetBtn');
 count = 1;
 
 
+function promptGridSize() {
+    y = prompt('what is y');
+    x = prompt('what is x');
+    let a = x * y;
+    return a;
+}
+
+
+
+let a = promptGridSize();
+
+console.log(a);
+//max is 35x28
 
 function createSquares() {
+
+
     for (let i = 0; i < a; i++) {
-        console.log(count);
         count = count + 1;
         const square = document.createElement('div');
         square.classList.add('square');
@@ -24,6 +33,21 @@ function createSquares() {
 };
 createSquares();
 
+function removeSquares() {
+    const parent = document.getElementById("etchASketchMainContainer")
+    while (parent.firstChild) {
+        parent.firstChild.remove()
+    }
+};
+
+resetBtn.addEventListener('click', function (e) {
+    console.log('click');
+    removeSquares();
+    a = promptGridSize();
+    createSquares();
+
+
+});
 
 
 
