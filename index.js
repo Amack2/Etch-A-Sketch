@@ -1,15 +1,14 @@
-const mainContainer = document.querySelector('#etchASketchMainContainer');
+const mainContainer = document.querySelector('#gridContainer');
 const resetBtn = document.querySelector('#resetBtn');
 count = 1;
 
 
 function promptGridSize() {
     y = prompt('what is y');
-    x = prompt('what is x');
+    x = y
     let a = x * y;
     return a;
 }
-
 
 
 let a = promptGridSize();
@@ -28,13 +27,17 @@ function createSquares() {
         square.addEventListener('mouseover', function (e) {
             square.classList.add('hovering');
         });
+
+        mainContainer.style.gridTemplateColumns = "repeat("+y+", 1fr)";
+        mainContainer.style.gridTemplateRows = "repeat("+y+", 1fr)";
+
     };
 
 };
 createSquares();
 
 function removeSquares() {
-    const parent = document.getElementById("etchASketchMainContainer")
+    const parent = document.getElementById("gridContainer")
     while (parent.firstChild) {
         parent.firstChild.remove()
     }
