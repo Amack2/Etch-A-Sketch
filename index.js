@@ -1,5 +1,7 @@
 const mainContainer = document.querySelector('#gridContainer');
+const colorBtn = document.querySelector('#colorBtn')
 const resetBtn = document.querySelector('#resetBtn');
+clicked = "no colours";
 count = 1;
 
 
@@ -10,9 +12,19 @@ function promptGridSize() {
         let a = x * y;
         return a;
     } else {
+        alert("Look, you're going to crash your computer. Make sure the number is below 100.")
         promptGridSize();
     }
 }
+
+colorBtn.addEventListener("click", colorScript);
+
+function colorScript() {
+    console.log("click");
+    clicked = "colours";
+
+
+};
 
 
 let a = promptGridSize();
@@ -28,10 +40,21 @@ function createSquares() {
         const square = document.createElement('div');
         square.classList.add('square');
         mainContainer.appendChild(square);
-        square.addEventListener('mouseover', function (e) {
-            square.classList.add('hovering');
-        });
-
+        if (clicked = "colours") {
+            let mouseOvers = 0;
+            square.addEventListener('mouseover', function (e) {
+                if (mouseOvers < 10) {
+                    square.classList.remove("originalHovering")
+                    square.classList.remove(`hovering${mouseOvers}`)
+                    mouseOvers = mouseOvers + 1;
+                    square.classList.add(`hovering${mouseOvers}`);
+                }
+            });
+        } else {
+            square.addEventListener('mouseover', function (e) {
+                square.classList.add("originalHovering")
+            });
+        }
         mainContainer.style.gridTemplateColumns = "repeat(" + y + ", 1fr)";
         mainContainer.style.gridTemplateRows = "repeat(" + y + ", 1fr)";
 
@@ -55,7 +78,6 @@ resetBtn.addEventListener('click', function (e) {
 
 
 });
-
 
 
 //const squares = document.querySelectorAll('.square');
