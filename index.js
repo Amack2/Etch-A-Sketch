@@ -4,10 +4,14 @@ count = 1;
 
 
 function promptGridSize() {
-    y = prompt('what is y');
-    x = y
-    let a = x * y;
-    return a;
+    y = prompt('Enter a number below 100');
+    if (y <= 100) {
+        x = y;
+        let a = x * y;
+        return a;
+    } else {
+        promptGridSize();
+    }
 }
 
 
@@ -28,8 +32,8 @@ function createSquares() {
             square.classList.add('hovering');
         });
 
-        mainContainer.style.gridTemplateColumns = "repeat("+y+", 1fr)";
-        mainContainer.style.gridTemplateRows = "repeat("+y+", 1fr)";
+        mainContainer.style.gridTemplateColumns = "repeat(" + y + ", 1fr)";
+        mainContainer.style.gridTemplateRows = "repeat(" + y + ", 1fr)";
 
     };
 
