@@ -1,8 +1,6 @@
 const mainContainer = document.querySelector('#gridContainer');
 const colorBtn = document.querySelector('#colorBtn')
 const resetBtn = document.querySelector('#resetBtn');
-clicked = "no colours";
-count = 1;
 
 
 function promptGridSize() {
@@ -16,52 +14,7 @@ function promptGridSize() {
         promptGridSize();
     }
 }
-
-colorBtn.addEventListener("click", colorScript);
-
-function colorScript() {
-    console.log("click");
-    clicked = "colours";
-
-
-};
-
-
 let a = promptGridSize();
-
-console.log(a);
-//max is 35x28
-
-function createSquares() {
-
-
-    for (let i = 0; i < a; i++) {
-        count = count + 1;
-        const square = document.createElement('div');
-        square.classList.add('square');
-        mainContainer.appendChild(square);
-        if (clicked = "colours") {
-            let mouseOvers = 0;
-            square.addEventListener('mouseover', function (e) {
-                if (mouseOvers < 10) {
-                    square.classList.remove("originalHovering")
-                    square.classList.remove(`hovering${mouseOvers}`)
-                    mouseOvers = mouseOvers + 1;
-                    square.classList.add(`hovering${mouseOvers}`);
-                }
-            });
-        } else {
-            square.addEventListener('mouseover', function (e) {
-                square.classList.add("originalHovering")
-            });
-        }
-        mainContainer.style.gridTemplateColumns = "repeat(" + y + ", 1fr)";
-        mainContainer.style.gridTemplateRows = "repeat(" + y + ", 1fr)";
-
-    };
-
-};
-createSquares();
 
 function removeSquares() {
     const parent = document.getElementById("gridContainer")
@@ -70,37 +23,63 @@ function removeSquares() {
     }
 };
 
-resetBtn.addEventListener('click', function (e) {
-    console.log('click');
+function reset1() {
     removeSquares();
     a = promptGridSize();
     createSquares();
+}
+
+
+resetBtn.addEventListener('click', function (e) {
+    console.log('click');
+    reset1();
+
 
 
 });
 
+count = 1;
+function createSquares() {
+    for (let i = 0; i < a; i++) {
+        count = count + 1;
+        const square = document.createElement('div');
+        square.classList.add('square');
+        mainContainer.appendChild(square);
+        mainContainer.style.gridTemplateColumns = "repeat(" + y + ", 1fr)";
+        mainContainer.style.gridTemplateRows = "repeat(" + y + ", 1fr)";
+        let mouseOvers = 0;
+        square.addEventListener('mouseover', function (e) {
+            if (colorBtn.innerHTML === "Colors on." && mouseOvers < 10) {
+                square.classList.remove("originalHovering")
+                square.classList.remove(`hovering${mouseOvers}`)
+                mouseOvers = mouseOvers + 1;
+                square.classList.add(`hovering${mouseOvers}`);
+            } else {
+                square.classList.remove(`hovering${mouseOvers}`)
+                mouseOvers = 0;
+                square.classList.add("originalHovering")
+            }
+        });
+    };
+};
 
-//const squares = document.querySelectorAll('.square');
-//squares.forEach(square)
 
-//square.classList.add('hovering');
-//setTimeout(function () {
+//the mouse over event seems to be having some effect ont he colorbtntog event which togs it to colours.
 
+createSquares();
 
+colorBtn.addEventListener("click", function (e) {
+    colorBtnTog();
+});
 
-//})
-
-//}
-
-
-//)
-
-
-
-
-
-
-
+function colorBtnTog() {
+    // var tog = document.getElementById("colorBtn");
+    if (colorBtn.innerHTML == "Colors off.") {
+        colorBtn.innerHTML = "Colors on.";
+    } else {
+        colorBtn.innerHTML = "Colors off.";
+    };
+}
 
 
 
